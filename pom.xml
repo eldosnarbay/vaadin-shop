@@ -16,12 +16,18 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <version.vaadin>7.7.3</version.vaadin>
+        <version.vaadin>7.7.7</version.vaadin>
         <version.vaadin-spring>1.1.0</version.vaadin-spring>
         <start-class>crud.Application</start-class>
     </properties>
 
     <dependencies>
+    	<dependency>
+		   <groupId>org.vaadin.teemusa</groupId>
+		   <artifactId>sidemenu</artifactId>
+		   <version>1.0</version>
+		</dependency>
+    	
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-spring-boot-starter</artifactId>
@@ -80,7 +86,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
-            <optional>true</optional>
+            <optional>true</optional> 
         </dependency>
 
         <dependency>

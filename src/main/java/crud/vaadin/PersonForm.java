@@ -59,5 +59,4 @@ public class PersonForm extends AbstractForm<Person> {
                 getToolbar()
         ).withWidth("");
     }
-
 }

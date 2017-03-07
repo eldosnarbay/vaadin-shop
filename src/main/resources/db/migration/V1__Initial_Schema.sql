@@ -16,3 +16,12 @@ INSERT INTO person (id,name,birth_day,email) VALUES (61,'Daquan Bell','1992-02-2
 INSERT INTO person (id,name,birth_day,email) VALUES (71,'Walter Hopper','1990-08-10','nonummy.ut@luctuslobortis.com'),(72,'Macaulay Rollins','1989-04-02','Aenean.eget.metus@risusDonecegestas.net'),(73,'Aidan Prince','1987-03-02','eleifend.nec.malesuada@sapiengravida.net'),(74,'Baxter Reed','1988-02-02','vitae.risus.Duis@dolorelitpellentesque.com'),(75,'Moses Maddox','1991-05-14','cursus.non.egestas@Namac.net'),(76,'Omar Knowles','1991-09-29','ipsum.Suspendisse.non@egetmassa.edu'),(77,'Tarik Mcdaniel','1988-04-27','elit@euelit.net'),(78,'Devin Williams','1986-11-18','Donec.egestas.Aliquam@fringilla.edu'),(79,'Phelan Castro','1990-10-28','Suspendisse.tristique.neque@vitaesemperegestas.com'),(80,'Thane Adkins','1992-01-26','id@vel.co.uk');
 INSERT INTO person (id,name,birth_day,email) VALUES (81,'Buckminster Sanders','1990-02-12','aliquam.iaculis.lacus@Donecnibh.ca'),(82,'Stuart Rodriguez','1993-07-25','ut.pellentesque@non.ca'),(83,'Kieran Aguirre','1988-01-25','vehicula.et@massarutrum.com'),(84,'Stephen Graham','1992-12-06','eu@imperdietdictummagna.org'),(85,'Reece Luna','1987-10-16','auctor.ullamcorper@sociisnatoque.co.uk'),(86,'Wing Cochran','1986-05-12','interdum@natoquepenatibus.edu'),(87,'Theodore Franks','1994-05-16','elementum.lorem@Maurisblanditenim.net'),(88,'Ishmael Herrera','1987-06-18','consequat.auctor.nunc@in.com'),(89,'Elton Shields','1989-06-10','hendrerit.Donec@vitaeorci.net'),(90,'Eaton Reyes','1994-10-29','turpis.In.condimentum@in.edu');
 INSERT INTO person (id,name,birth_day,email) VALUES (91,'Cairo Monroe','1990-07-12','dolor.Donec@maurisIntegersem.ca'),(92,'Bradley Zimmerman','1989-03-12','commodo@aliquetPhasellus.ca'),(93,'Raymond Oliver','1994-01-30','per.conubia@lectusquismassa.ca'),(94,'Julian Case','1990-10-04','magna.Cras.convallis@Sedpharetra.net'),(95,'Kaseem Cotton','1995-02-22','adipiscing.Mauris@etliberoProin.com'),(96,'Paul Michael','1994-03-15','tempor@eu.edu'),(97,'Isaac Hatfield','1987-05-30','mus@imperdietnonvestibulum.org'),(98,'Keaton Grimes','1990-06-13','Phasellus.nulla@ornareFusce.net'),(99,'Forrest Hamilton','1994-09-12','Sed.nulla@nec.net'),(100,'Lyle Ingram','1986-11-14','Donec.consectetuer.mauris@parturient.ca');
+
+
+CREATE TABLE category (
+  id bigint auto_increment,
+  name varchar(50) not null,
+  primary key (id));
+
+INSERT INTO category (id,name) VALUES (1,'Milk products');
+INSERT INTO category (id,name) VALUES (2,'Drink');
