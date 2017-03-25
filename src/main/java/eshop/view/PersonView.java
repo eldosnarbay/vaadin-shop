@@ -21,9 +21,9 @@ import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.TextField;
 
-import eshop.entity.Person;
-import eshop.form.PersonForm;
-import eshop.repository.PersonRepository;
+import eshop.entity.Users;
+import eshop.form.UserForm;
+import eshop.repository.UserRepository;
 import eshop.vaadin.PersonModifiedEvent;
 
 @SpringView
@@ -31,11 +31,11 @@ public class PersonView extends MVerticalLayout implements View {
 
 	private static final long serialVersionUID = 1L;
 
-	PersonRepository repo;
-	PersonForm personForm;
+	UserRepository repo;
+	UserForm personForm;
 	EventBus.UIEventBus eventBus;
 
-	private MTable<Person> list = new MTable<>(Person.class).withProperties("id", "name", "email")
+	private MTable<Users> list = new MTable<>(Users.class).withProperties("id", "name", "email")
 			.withColumnHeaders("id", "Name", "Email").setSortableProperties("name", "email").withFullWidth();
 
 	private TextField filterByName = new MTextField().withInputPrompt("Filter by name");
@@ -45,7 +45,7 @@ public class PersonView extends MVerticalLayout implements View {
 			this::remove);
 
 	@Autowired
-	public PersonView(PersonRepository r, PersonForm f, EventBus.UIEventBus b) {
+	public PersonView(UserRepository r, UserForm f, EventBus.UIEventBus b) {
 		this.repo = r;
 		this.personForm = f;
 		this.eventBus = b;
@@ -111,7 +111,7 @@ public class PersonView extends MVerticalLayout implements View {
 	}
 
 	public void add(ClickEvent clickEvent) {
-		edit(new Person());
+		edit(new Users());
 	}
 
 	public void edit(ClickEvent e) {
@@ -124,7 +124,7 @@ public class PersonView extends MVerticalLayout implements View {
 		listEntities();
 	}
 
-	protected void edit(final Person phoneBookEntry) {
+	protected void edit(final Users phoneBookEntry) {
 		personForm.setEntity(phoneBookEntry);
 		personForm.openInModalPopup();
 	}

@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 
 import eshop.annotation.VaadinComponent;
-import eshop.dto.ItemDto;
+import eshop.entity.Item;
 import eshop.form.ItemForm;
 import eshop.layout.CustomView;
 import eshop.service.ItemService;
@@ -32,15 +32,15 @@ public class ItemFormView extends CustomView {
 
 	@Override
 	public void enter(ViewChangeEvent event) {
-		ItemDto itemDto;
+		Item itemDto;
 		if (event.getParameters().isEmpty()) {
 			// empty form
-			itemDto = new ItemDto();
+			itemDto = new Item();
 		} else {
 			int id = Integer.parseInt(event.getParameters().toString());
 			itemDto = itemService.findOne(id);
 		}
-		itemForm.setComponent(itemDto, ItemDto.class);
+		itemForm.setComponent(itemDto, Item.class);
 	}
 
 }

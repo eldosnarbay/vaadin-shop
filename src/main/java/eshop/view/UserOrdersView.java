@@ -36,8 +36,7 @@ public class UserOrdersView extends CustomView {
 		final IndexedContainer container = new IndexedContainer();
 		container.addContainerProperty("name", String.class, null);
 		container.addContainerProperty("city", String.class, null);
-		container.addContainerProperty("street", String.class, null);
-		container.addContainerProperty("zip", String.class, null);
+		container.addContainerProperty("address", String.class, null);
 		container.addContainerProperty("orderDate", String.class, null);
 		container.addContainerProperty("orderedItems", String.class, null);
 		for (UserOrder userOrder : userOrders) {
@@ -47,9 +46,7 @@ public class UserOrdersView extends CustomView {
 			Property<String> propertyCity = item.getItemProperty("city");
 			propertyCity.setValue(userOrder.getCity());
 			Property<String> propertyStreet = item.getItemProperty("street");
-			propertyStreet.setValue(userOrder.getStreet());
-			Property<String> propertyZip = item.getItemProperty("zip");
-			propertyZip.setValue(userOrder.getZip());
+			propertyStreet.setValue(userOrder.getAddress());
 			Property<String> propertyOrderDate = item.getItemProperty("orderDate");
 			propertyOrderDate.setValue("" + userOrder.getOrderDate());
 			Property<String> propertyOrderedItems = item.getItemProperty("orderedItems");

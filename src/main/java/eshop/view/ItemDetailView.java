@@ -7,7 +7,6 @@ import com.vaadin.ui.Label;
 
 import eshop.annotation.VaadinComponent;
 import eshop.component.OrderForm;
-import eshop.dto.ItemDto;
 import eshop.entity.Item;
 import eshop.layout.CustomView;
 import eshop.service.ItemService;
@@ -24,7 +23,7 @@ public class ItemDetailView extends CustomView {
 	private Label labelDescription;
 	private OrderForm orderForm;
 
-	private ItemDto itemDto;
+	private Item itemDto;
 
 	public ItemDetailView() {
 		super("Item");
@@ -36,8 +35,7 @@ public class ItemDetailView extends CustomView {
 			@Override
 			public void onSubmit() {
 				MyVaadinUI myVaadinUI = (MyVaadinUI) MyVaadinUI.getCurrent();
-//				Item item = new DozerBeanMapper().map(itemDto, Item.class);
-//				myVaadinUI.getBasket().add(item, orderForm.getQuantity());
+				myVaadinUI.getBasket().add(new Item(itemDto), orderForm.getQuantity());
 				MyVaadinUI.getCurrent().getNavigator().navigateTo(MyVaadinUI.BASKET_VIEW);
 			}
 		};
@@ -51,7 +49,7 @@ public class ItemDetailView extends CustomView {
 		itemDto = itemService.findOne(id);
 		super.setTitle(itemDto.getName());
 		labelName.setValue(itemDto.getName());
-		labelPrice.setValue("Price: " + itemDto.getPrice());
+		labelPrice.setValue("Price: " + itemDto.getAmount());
 		labelDescription.setValue(itemDto.getDescription());
 		orderForm.init();
 	}

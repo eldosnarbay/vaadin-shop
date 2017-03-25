@@ -2,17 +2,17 @@ package eshop.vaadin;
 
 import java.io.Serializable;
 
-import eshop.entity.Person;
+import eshop.entity.Users;
 
 public class PersonModifiedEvent implements Serializable {
 
-    private final Person person;
+    private final Users person;
 
-    public PersonModifiedEvent(Person p) {
+    public PersonModifiedEvent(Users p) {
         this.person = p;
     }
 
-    public Person getPerson() {
+    public Users getPerson() {
         return person;
     }
     

@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-public class Person implements Serializable {
+public class Users implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -31,7 +31,9 @@ public class Person implements Serializable {
     @Pattern(regexp = ".+@.+\\.[a-z]+", message = "Must be valid email")
     private String email;
     
-    public Person() {
+    private String password;
+    
+    public Users() {
     }
 
     public long getId() {
@@ -81,4 +83,12 @@ public class Person implements Serializable {
     public void setColleague(Boolean colleague) {
         this.colleague = colleague;
     }
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 }

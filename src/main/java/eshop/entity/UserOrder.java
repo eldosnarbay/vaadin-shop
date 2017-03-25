@@ -7,30 +7,32 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 
-@Entity
-@Table(name = "USER_ORDER")
 public class UserOrder implements Serializable {
 
 	@Id
 	@GeneratedValue
 	@Column(name = "USER_ORDER_ID")
 	private Integer id;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "USER_ID")
+	private Users user;
 
 	private String name = "";
 
 	private String city = "";
 
-	private String street = "";
-
-	private String zip = "";
+	private String address = "";
 
 	@Column(name = "ORDER_DATE")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -65,22 +67,6 @@ public class UserOrder implements Serializable {
 		this.name = name;
 	}
 
-	public String getStreet() {
-		return this.street;
-	}
-
-	public void setStreet(String street) {
-		this.street = street;
-	}
-
-	public String getZip() {
-		return this.zip;
-	}
-
-	public void setZip(String zip) {
-		this.zip = zip;
-	}
-
 	public String getCity() {
 		return this.city;
 	}
@@ -95,6 +81,14 @@ public class UserOrder implements Serializable {
 
 	public void setOrderDate(Date orderDate) {
 		this.orderDate = orderDate;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 }

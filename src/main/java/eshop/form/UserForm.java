@@ -6,8 +6,8 @@ import com.vaadin.ui.Component;
 import com.vaadin.ui.DateField;
 import com.vaadin.ui.TextField;
 
-import eshop.entity.Person;
-import eshop.repository.PersonRepository;
+import eshop.entity.Users;
+import eshop.repository.UserRepository;
 import eshop.vaadin.PersonModifiedEvent;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,20 +20,21 @@ import org.vaadin.viritin.layouts.MVerticalLayout;
 
 @UIScope
 @SpringComponent
-public class PersonForm extends AbstractForm<Person> {
+public class UserForm extends AbstractForm<Users> {
 
     private static final long serialVersionUID = 1L;
 
     EventBus.UIEventBus eventBus;
-    PersonRepository repo;
+    UserRepository repo;
 
     TextField name = new MTextField("Name");
     TextField email = new MTextField("Email");
     TextField phoneNumber = new MTextField("Phone");
     DateField birthDay = new DateField("Birthday");
-    Switch colleague = new Switch("Colleague");
+    TextField password = new MTextField("Password");
+//    Switch colleague = new Switch("Colleague");
 
-    PersonForm(PersonRepository r, EventBus.UIEventBus b) {
+    UserForm(UserRepository r, EventBus.UIEventBus b) {
         this.repo = r;
         this.eventBus = b;
 
@@ -57,7 +58,7 @@ public class PersonForm extends AbstractForm<Person> {
                         email,
                         phoneNumber,
                         birthDay,
-                        colleague
+                        password
                 ).withWidth(""),
                 getToolbar()
         ).withWidth("");

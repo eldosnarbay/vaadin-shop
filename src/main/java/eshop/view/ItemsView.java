@@ -10,7 +10,7 @@ import com.vaadin.ui.Table;
 import com.vaadin.ui.UI;
 
 import eshop.annotation.VaadinComponent;
-import eshop.dto.ItemDto;
+import eshop.entity.Item;
 import eshop.layout.CustomView;
 import eshop.service.ItemService;
 import eshop.vaadin.MyVaadinUI;
@@ -43,7 +43,7 @@ public class ItemsView extends CustomView {
 
 	@Override
 	public void enter(ViewChangeEvent event) {
-		BeanContainer<Integer, ItemDto> container = new BeanContainer<Integer, ItemDto>(ItemDto.class);
+		BeanContainer<Integer, Item> container = new BeanContainer<Integer, Item>(Item.class);
 		container.setBeanIdProperty("id");
 		container.addAll(itemService.findAll());
 		table.setContainerDataSource(container);

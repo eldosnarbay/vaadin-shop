@@ -19,8 +19,7 @@ public class UserOrderForm extends CustomForm<UserOrder> {
 
 	private TextField name;
 	private TextField city;
-	private TextField street;
-	private TextField zip;
+	private TextField address;
 
 	@Autowired
 	private UserOrderService userOrderService;
@@ -31,9 +30,8 @@ public class UserOrderForm extends CustomForm<UserOrder> {
 	public UserOrderForm() {
 		name = new TextField("Name:");
 		city = new TextField("City:");
-		street = new TextField("Street:");
-		zip = new TextField("ZIP:");
-		addComponents(name, city, street, zip);
+		address = new TextField("Address:");
+		addComponents(name, city, address);
 	}
 
 	@Override

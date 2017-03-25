@@ -1,12 +1,13 @@
 package eshop.entity;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
@@ -25,35 +26,47 @@ public class Item implements Serializable {
 	private String description;
 
 	@Min(value = 1, message = "Price must not be zero!")
-	private double price;
+	private double amount;
 
-	@OneToMany(mappedBy = "item")
-	private List<OrderedItem> orderedItems;
+	private String oem;
+	
+	private String capacity;
+	
+	private String weight;
+	
+	private String usage;
+	
+	private String code;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "CATEGORY_ID")
+	private Categories category;
 
 	public Item() {
 	}
 
-	public Item(Integer id, String name, String description, double price) {
+	public Item(Integer id, String name, String description, double amount) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
-		this.price = price;
+		this.amount = amount;
+	}
+	
+	
+
+	public Item(Item itemDto) {
+		this.id = itemDto.getId();
+		this.name = itemDto.getName();
+		this.description = itemDto.getDescription();
+		this.amount = itemDto.getAmount();
 	}
 
-	public List<OrderedItem> getOrderedItems() {
-		return orderedItems;
+	public double getAmount() {
+		return amount;
 	}
 
-	public void setOrderedItems(List<OrderedItem> orderedItems) {
-		this.orderedItems = orderedItems;
-	}
-
-	public double getPrice() {
-		return price;
-	}
-
-	public void setPrice(double price) {
-		this.price = price;
+	public void setAmount(double amount) {
+		this.amount = amount;
 	}
 
 	public Integer getId() {
@@ -78,6 +91,54 @@ public class Item implements Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getOem() {
+		return oem;
+	}
+
+	public void setOem(String oem) {
+		this.oem = oem;
+	}
+
+	public String getCapacity() {
+		return capacity;
+	}
+
+	public void setCapacity(String capacity) {
+		this.capacity = capacity;
+	}
+
+	public String getWeight() {
+		return weight;
+	}
+
+	public void setWeight(String weight) {
+		this.weight = weight;
+	}
+
+	public String getUsage() {
+		return usage;
+	}
+
+	public void setUsage(String usage) {
+		this.usage = usage;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public Categories getCategory() {
+		return category;
+	}
+
+	public void setCategory(Categories category) {
+		this.category = category;
 	}
 
 }

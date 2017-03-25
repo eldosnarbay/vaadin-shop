@@ -9,7 +9,7 @@
 	</parent>
 
 	<groupId>com.example</groupId>
-	<artifactId>spring-data-vaadin-crud</artifactId>
+	<artifactId>vaadin-shop</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<description>Simple CRUD with Vaadin and Spring Data backend</description>
 
