@@ -45,11 +45,17 @@ public class Item implements Serializable {
 	public Item() {
 	}
 
-	public Item(Integer id, String name, String description, double amount) {
+	public Item(Integer id, String name, String description, double amount, String oem, String capacity,
+				String weight, String usage, String code) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.amount = amount;
+		this.oem = oem;
+		this.capacity = capacity;
+		this.weight = weight;
+		this.usage = usage;
+		this.code = code;
 	}
 	
 	
@@ -59,6 +65,12 @@ public class Item implements Serializable {
 		this.name = itemDto.getName();
 		this.description = itemDto.getDescription();
 		this.amount = itemDto.getAmount();
+		this.oem = itemDto.getOem();
+		this.capacity = itemDto.getCapacity();
+		this.weight = itemDto.getWeight();
+		this.usage = itemDto.getUsage();
+		this.code = itemDto.getCode();
+		
 	}
 
 	public double getAmount() {

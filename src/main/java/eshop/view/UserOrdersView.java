@@ -41,8 +41,6 @@ public class UserOrdersView extends CustomView {
 		container.addContainerProperty("orderedItems", String.class, null);
 		for (UserOrder userOrder : userOrders) {
 			Item item = container.addItem(userOrder.getId());
-			Property<String> propertyName = item.getItemProperty("name");
-			propertyName.setValue(userOrder.getName());
 			Property<String> propertyCity = item.getItemProperty("city");
 			propertyCity.setValue(userOrder.getCity());
 			Property<String> propertyStreet = item.getItemProperty("street");

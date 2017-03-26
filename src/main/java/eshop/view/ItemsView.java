@@ -47,7 +47,7 @@ public class ItemsView extends CustomView {
 		container.setBeanIdProperty("id");
 		container.addAll(itemService.findAll());
 		table.setContainerDataSource(container);
-		table.setVisibleColumns("name", "price");
+		table.setVisibleColumns("name", "amount");
 	}
 
 }

@@ -17,18 +17,18 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+@Entity
+@Table(name = "user_order")
 public class UserOrder implements Serializable {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "USER_ORDER_ID")
+	@Column(name = "id")
 	private Integer id;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "USER_ID")
 	private Users user;
-
-	private String name = "";
 
 	private String city = "";
 
@@ -59,13 +59,8 @@ public class UserOrder implements Serializable {
 		this.id = id;
 	}
 
-	public String getName() {
-		return this.name;
-	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
+
 
 	public String getCity() {
 		return this.city;

@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ORDERED_ITEM")
+@Table(name = "ordered_item")
 public class OrderedItem implements Serializable {
 
 	@Id
@@ -20,8 +20,8 @@ public class OrderedItem implements Serializable {
 
 	private int quantity;
 
-	@ManyToOne
-	@JoinColumn(name = "USER_ORDER_ID")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_order_id")
 	private UserOrder userOrder;
 
 	@ManyToOne(fetch = FetchType.LAZY)

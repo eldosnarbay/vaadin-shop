@@ -21,12 +21,22 @@ public class ItemForm extends CustomForm<Item> {
 	private TextField name;
 	private TextField description;
 	private TextField amount;
+	private TextField oem;
+	private TextField capacity;
+	private TextField weight;
+	private TextField usage;
+	private TextField code;
 
 	public ItemForm() {
 		name = new TextField("Name:");
 		description = new TextField("Description:");
 		amount = new TextField("Amount:");
-		addComponents(name, description, amount);
+		oem = new TextField("Oem:");
+		capacity = new TextField("Capacity:");
+		weight = new TextField("Weight:");
+		usage = new TextField("Usage:");
+		code = new TextField("Code:");
+		addComponents(name, description, amount, oem, capacity, weight, usage, code);
 	}
 
 	@Override

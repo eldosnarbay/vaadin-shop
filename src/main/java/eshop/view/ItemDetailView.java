@@ -19,8 +19,13 @@ public class ItemDetailView extends CustomView {
 	private ItemService itemService;
 
 	private Label labelName;
-	private Label labelPrice;
+	private Label labelAmount;
 	private Label labelDescription;
+	private Label labelOem;
+	private Label labelCapacity;
+	private Label labelWeight;
+	private Label labelUsage;
+	private Label labelCode;
 	private OrderForm orderForm;
 
 	private Item itemDto;
@@ -28,8 +33,13 @@ public class ItemDetailView extends CustomView {
 	public ItemDetailView() {
 		super("Item");
 		labelName = new Label();
-		labelPrice = new Label();
+		labelAmount = new Label();
 		labelDescription = new Label();
+		labelOem = new Label();
+		labelCapacity = new Label();
+		labelWeight = new Label();
+		labelUsage = new Label();
+		labelCode = new Label();
 		orderForm = new OrderForm() {
 
 			@Override
@@ -39,7 +49,8 @@ public class ItemDetailView extends CustomView {
 				MyVaadinUI.getCurrent().getNavigator().navigateTo(MyVaadinUI.BASKET_VIEW);
 			}
 		};
-		mainLayout.addComponents(labelName, labelPrice, labelDescription, orderForm);
+		mainLayout.addComponents(labelName, labelAmount, labelDescription, labelOem, labelCapacity,
+				 labelWeight, labelUsage, labelCode, orderForm);
 	}
 
 	@Override
@@ -49,8 +60,13 @@ public class ItemDetailView extends CustomView {
 		itemDto = itemService.findOne(id);
 		super.setTitle(itemDto.getName());
 		labelName.setValue(itemDto.getName());
-		labelPrice.setValue("Price: " + itemDto.getAmount());
+		labelAmount.setValue("Price: " + itemDto.getAmount());
 		labelDescription.setValue(itemDto.getDescription());
+		labelOem.setValue(itemDto.getOem());
+		labelCapacity.setValue(itemDto.getCapacity());
+		labelWeight.setValue(itemDto.getWeight());
+		labelUsage.setValue(itemDto.getUsage());
+		labelCode.setValue(itemDto.getCode());
 		orderForm.init();
 	}
 

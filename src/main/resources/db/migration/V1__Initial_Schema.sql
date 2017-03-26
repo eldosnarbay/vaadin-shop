@@ -59,7 +59,7 @@ CREATE TABLE item (
   weight character varying(50),  
   usage character varying(50),
   code character(8),
-  category_id integer,
+  category_id integer references categories(id),
   primary key (id));
   
 INSERT INTO item (id, category_id, oem, capacity, weight, amount, name, usage, code) VALUES (18702, 41, '3408010A8E', NULL, '0.00 кг', 0.00, 'Бачок ГУР FAW', 'FAW', '04233   ');
@@ -266,15 +266,15 @@ INSERT INTO item (id, category_id, oem, capacity, weight, amount, name, usage, c
 
 CREATE TABLE user_order (
   id bigint auto_increment,
-  user_id bigint,
+  user_id bigint references users(id),
   order_date timestamp,
   city varchar(255),
   address varchar(255),
   primary key (id));
   
-CREATE TABLE ordered_item (
+CREATE TABLE ordered_Item (
   id bigint auto_increment,
-  user_order_id bigint,
-  item_id bigint,
+  user_order_id bigint references user_order(id),
+  item_id bigint references item(id),
   quantity integer,
   primary key (id));
