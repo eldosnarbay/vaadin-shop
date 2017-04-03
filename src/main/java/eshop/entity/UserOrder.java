@@ -41,7 +41,8 @@ public class UserOrder implements Serializable {
 	@OneToMany(mappedBy = "userOrder", cascade = CascadeType.ALL)
 	private List<OrderedItem> orderedItems;
 	
-	private boolean status;
+	@Column(name = "is_paided")
+	private boolean isPaided;
 	
 	private String card;
 
@@ -86,21 +87,21 @@ public class UserOrder implements Serializable {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
-	public boolean isStatus() {
-		return status;
-	}
-
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
-
+	
 	public String getCard() {
 		return card;
 	}
 
 	public void setCard(String card) {
 		this.card = card;
+	}
+
+	public boolean isPaided() {
+		return isPaided;
+	}
+
+	public void setPaided(boolean isPaided) {
+		this.isPaided = isPaided;
 	}
 
 }

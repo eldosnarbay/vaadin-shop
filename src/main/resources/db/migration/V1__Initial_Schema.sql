@@ -268,7 +268,7 @@ CREATE TABLE user_order (
   order_date timestamp,
   city varchar(255),
   address varchar(255),
-  status boolean,
+  is_paided boolean,
   card varchar(255),
   primary key (id));
   

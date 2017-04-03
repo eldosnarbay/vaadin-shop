@@ -38,7 +38,7 @@ public class Item implements Serializable {
 	
 	private String code;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "CATEGORY_ID")
 	private Categories category;
 

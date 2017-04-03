@@ -34,13 +34,14 @@ public class UserOrdersView extends CustomView {
 	public void enter(ViewChangeEvent event) {
 		List<UserOrder> userOrders = userOrderService.findAll();
 		final IndexedContainer container = new IndexedContainer();
-		container.addContainerProperty("name", String.class, null);
 		container.addContainerProperty("city", String.class, null);
 		container.addContainerProperty("street", String.class, null);
 		container.addContainerProperty("orderDate", String.class, null);
 		container.addContainerProperty("orderedItems", String.class, null);
+		container.addContainerProperty("isPaided", String.class, null);
+		container.addContainerProperty("card", String.class, null);
 		for (UserOrder userOrder : userOrders) {
-			Item item = container.addItem(userOrder.getId());
+			com.vaadin.data.Item item = container.addItem(userOrder.getId());
 			Property<String> propertyCity = item.getItemProperty("city");
 			propertyCity.setValue(userOrder.getCity());
 			Property<String> propertyStreet = item.getItemProperty("street");
@@ -49,6 +50,10 @@ public class UserOrdersView extends CustomView {
 			propertyOrderDate.setValue("" + userOrder.getOrderDate());
 			Property<String> propertyOrderedItems = item.getItemProperty("orderedItems");
 			propertyOrderedItems.setValue("" + userOrder.getOrderedItems().size());
+			Property<String> paidedItems = item.getItemProperty("isPaided");
+			paidedItems.setValue("" + userOrder.isPaided());
+			Property<String> cardItems = item.getItemProperty("card");
+			cardItems.setValue("" + userOrder.getCard());
 		}
 		table.setContainerDataSource(container);
 		table.setColumnHeader("orderDate", "order date");

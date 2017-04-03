@@ -7,7 +7,9 @@ import org.vaadin.viritin.layouts.MHorizontalLayout;
 import org.vaadin.viritin.layouts.MVerticalLayout;
 
 import com.vaadin.data.Container;
+import com.vaadin.data.Property;
 import com.vaadin.data.util.BeanContainer;
+import com.vaadin.data.util.IndexedContainer;
 import com.vaadin.event.ItemClickEvent;
 import com.vaadin.event.ItemClickEvent.ItemClickListener;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
@@ -23,18 +25,26 @@ import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
 import eshop.annotation.VaadinComponent;
+import eshop.entity.Categories;
 import eshop.entity.Item;
+import eshop.entity.UserOrder;
 import eshop.layout.CustomView;
+import eshop.repository.CategoryRepository;
 import eshop.service.ItemService;
 import eshop.vaadin.MyVaadinUI;
 
 @VaadinComponent
 public class ItemsView extends CustomView {
+	
+	@Autowired
+	CategoryRepository catRepo;
 
 	@Autowired
 	private ItemService itemService;
 	private Table table;
 	private String id;
+	private int count = 0;
+	private double sum = 0;
 
 	public ItemsView() {
 		super("Item list");
@@ -88,22 +98,36 @@ public class ItemsView extends CustomView {
 
 	@Override
 	public void enter(ViewChangeEvent event) {
-		BeanContainer<Integer, Item> container = new BeanContainer<Integer, Item>(Item.class);
-		container.setBeanIdProperty("id");
-		container.addAll(itemService.findAll());
+//		BeanContainer<Integer, Item> container = new BeanContainer<Integer, Item>(Item.class);
+//		container.setBeanIdProperty("id");
+//		container.addAll(itemService.findAll());
+		try {
+		final IndexedContainer container = new IndexedContainer();
+		container.addContainerProperty("category", String.class, null);
+		container.addContainerProperty("name", String.class, null);
+		container.addContainerProperty("amount", String.class, null);
+		container.addContainerProperty("capacity", String.class, null);
+		container.addContainerProperty("usage", String.class, null);
+		container.addContainerProperty("oem", String.class, null);
+		for (Item items : itemService.findAll()) {
+			com.vaadin.data.Item item = container.addItem(items.getId());
+			Property<String> propertyCat = item.getItemProperty("category");
+			propertyCat.setValue(items.getCategory().getName());
+			Property<String> propertyCity = item.getItemProperty("name");
+			propertyCity.setValue(items.getName());
+			Property<String> propertyStreet = item.getItemProperty("amount");
+			propertyStreet.setValue(String.valueOf(items.getAmount()));
+			Property<String> propertyOrderDate = item.getItemProperty("capacity");
+			propertyOrderDate.setValue("" + items.getCapacity());
+			Property<String> propertyOrderedItems = item.getItemProperty("usage");
+			propertyOrderedItems.setValue("" + items.getUsage());
+			Property<String> paidedItems = item.getItemProperty("oem");
+			paidedItems.setValue("" + items.getOem());
+		}
 		table.setContainerDataSource(container);
-		table.addGeneratedColumn("generated", new ColumnGenerator() {
-
-			@Override
-			public Component generateCell(Table source, final Object itemId, Object columnId) {
-				Button button = new Button("caption");
-				// Listener for the button
-				button.addClickListener(Event -> {
-					// Your code
-				});
-				return button;
-			}
-		});
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

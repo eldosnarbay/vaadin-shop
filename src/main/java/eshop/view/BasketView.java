@@ -5,6 +5,7 @@ import java.util.Collection;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.vaadin.viritin.layouts.MHorizontalLayout;
 
 import com.vaadin.data.Item;
 import com.vaadin.data.Property;
@@ -38,8 +39,11 @@ public class BasketView extends CustomView {
 	
 	@PostConstruct
 	public void init() {
-		mainLayout.addComponents(table, userOrderForm);
+		MHorizontalLayout hor = new MHorizontalLayout(table);
+		hor.setWidth("100%");
+		mainLayout.addComponents(hor, userOrderForm);
 		table.setHeight("200px");
+		table.setWidth("100%");
 	}
 
 	@Override
