@@ -7,7 +7,7 @@ CREATE TABLE users (
   password varchar(255),
   primary key (id));
 
-INSERT INTO users (id,name,birth_day,email,password) VALUES (10,'Dale Todd','1994-08-17','enim@gravida.org','123');
+INSERT INTO users (id,name,birth_day,email,password) VALUES (10,'Dale Todd','1994-08-17','admin','123');
 INSERT INTO users (id,name,birth_day,email,password) VALUES (20,'Keane Marshall','1988-11-21','egestas@cursus.com','123');
 INSERT INTO users (id,name,birth_day,email,password) VALUES (30,'Colton Skinner','1991-03-10','facilisi@vitae.org','123');
 INSERT INTO users (id,name,birth_day,email,password) VALUES (40,'Hashim Justice','1990-01-24','tincidunt.aliquam.arcu@augueeu.org','123');
@@ -83,7 +83,6 @@ INSERT INTO item (id, category_id, oem, capacity, weight, amount, name, usage, c
 INSERT INTO item (id, category_id, oem, capacity, weight, amount, name, usage, code) VALUES (18720, 37, NULL, '0.00018 м3', '0.50 кг', 1800.00, 'Болт зуба ковша CHANGLIN погрузчик 24*85 (круглый)', 'CHANGLIN', '08638   ');
 INSERT INTO item (id, category_id, oem, capacity, weight, amount, name, usage, code) VALUES (18721, 42, 'QD1315B-600', '0.00048 м3', '0.61 кг', 0.00, 'Бендикс стартера 11 зубьев 12 шлицов', '农用车', '11319   ');
 INSERT INTO item (id, category_id, oem, capacity, weight, amount, name, usage, code) VALUES (18722, 38, '*0634..', '0.00039 м3', '0.00 кг', 54.00, 'Иголка подшипника бортового редуктора  NORD BENZ', 'MB', '07454   ');
-INSERT INTO item (id, category_id, oem, capacity, weight, amount, name, usage, code) VALUES (18723, 36, NULL, NULL, '0.00 кг', 0.00, '*', 'не задана', '06000   ');
 INSERT INTO item (id, category_id, oem, capacity, weight, amount, name, usage, code) VALUES (18724, 39, 'AZ9719410109', '0.03053 м3', '134.00 кг', 0.00, 'Балка передняя 850MM HOWO 6*4/8*4', 'HOWO', '04400   ');
 INSERT INTO item (id, category_id, oem, capacity, weight, amount, name, usage, code) VALUES (18725, 28, NULL, '0.00055 м3', '0.20 кг', 23920.00, 'Блок управления автономной печи Hongye', '宏业', '00106   ');
 INSERT INTO item (id, category_id, oem, capacity, weight, amount, name, usage, code) VALUES (18726, 28, 'JD11', NULL, '0.00 кг', 0.00, 'Блок управления автономной печи Hongye JD11', '宏业', '05882   ');
@@ -99,7 +98,6 @@ INSERT INTO item (id, category_id, oem, capacity, weight, amount, name, usage, c
 INSERT INTO item (id, category_id, oem, capacity, weight, amount, name, usage, code) VALUES (18736, 40, '29ADP5-05010', '0.00396 м3', '4.58 кг', 12171.60, 'Амортизатор CAMC 8*4 передний', 'CAMC', '00003   ');
 INSERT INTO item (id, category_id, oem, capacity, weight, amount, name, usage, code) VALUES (18737, 23, 'AZ9625190019+001', '0.075 м3', '8.40 кг', 26864.00, 'Картридж пылеуловителя HOWO (в сборе )', 'HOWO', '00771   ');
 INSERT INTO item (id, category_id, oem, capacity, weight, amount, name, usage, code) VALUES (18738, 30, NULL, NULL, '0.00 кг', 0.00, 'Клапан воздушный предохранительный 4х контурный DONG FENG', 'DF', '00781   ');
-INSERT INTO item (id, category_id, oem, capacity, weight, amount, name, usage, code) VALUES (18739, 24, NULL, NULL, '0.00 кг', 0.00, '*', 'не задана', '06030   ');
 INSERT INTO item (id, category_id, oem, capacity, weight, amount, name, usage, code) VALUES (18741, 22, NULL, '0.00035 м3', '0.25 кг', 0.00, 'Венчик на форсунку FAW', 'FAW', '08693   ');
 INSERT INTO item (id, category_id, oem, capacity, weight, amount, name, usage, code) VALUES (18742, 32, '3502014C', '0.0529 м3', '46.00 кг', 0.00, 'Барабан тормозной FAW (мост 290) задний', 'FAW290', '00044   ');
 INSERT INTO item (id, category_id, oem, capacity, weight, amount, name, usage, code) VALUES (18743, 34, '10*715', '0.00012 м3', '0.06 кг', 900.00, 'Ремень   10* 715', 'TY', '02287   ');
@@ -270,6 +268,8 @@ CREATE TABLE user_order (
   order_date timestamp,
   city varchar(255),
   address varchar(255),
+  status boolean,
+  card varchar(255),
   primary key (id));
   
 CREATE TABLE ordered_Item (

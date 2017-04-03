@@ -25,9 +25,9 @@ public class ItemService {
 	public Item findOne(int id) {
 		return itemRepository.findOne(id);
 	}
-
+	
 	public List<Item> findAll() {
-		return itemRepository.findAll();
+		return itemRepository.findAllSorted();
 	}
 
 	public void remove(int id) {

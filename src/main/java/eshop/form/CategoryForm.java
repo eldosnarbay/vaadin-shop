@@ -36,7 +36,7 @@ public class CategoryForm extends CustomForm<Categories> {
 
 	@Override
 	public void onCancel() {
-		UI.getCurrent().getNavigator().navigateTo(MyVaadinUI.HOME_VIEW);
+		UI.getCurrent().getNavigator().navigateTo(MyVaadinUI.ITEMS_VIEW);
 	}
 
 }

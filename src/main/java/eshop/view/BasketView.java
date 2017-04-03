@@ -39,6 +39,7 @@ public class BasketView extends CustomView {
 	@PostConstruct
 	public void init() {
 		mainLayout.addComponents(table, userOrderForm);
+		table.setHeight("200px");
 	}
 
 	@Override

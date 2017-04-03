@@ -40,6 +40,10 @@ public class UserOrder implements Serializable {
 
 	@OneToMany(mappedBy = "userOrder", cascade = CascadeType.ALL)
 	private List<OrderedItem> orderedItems;
+	
+	private boolean status;
+	
+	private String card;
 
 	private static final long serialVersionUID = 1L;
 
@@ -58,9 +62,6 @@ public class UserOrder implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-
-
 
 	public String getCity() {
 		return this.city;
@@ -84,6 +85,22 @@ public class UserOrder implements Serializable {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
+	public String getCard() {
+		return card;
+	}
+
+	public void setCard(String card) {
+		this.card = card;
 	}
 
 }

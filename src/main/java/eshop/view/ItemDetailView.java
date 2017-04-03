@@ -46,7 +46,7 @@ public class ItemDetailView extends CustomView {
 			public void onSubmit() {
 				MyVaadinUI myVaadinUI = (MyVaadinUI) MyVaadinUI.getCurrent();
 				myVaadinUI.getBasket().add(new Item(itemDto), orderForm.getQuantity());
-				MyVaadinUI.getCurrent().getNavigator().navigateTo(MyVaadinUI.BASKET_VIEW);
+				MyVaadinUI.getCurrent().getNavigator().navigateTo(MyVaadinUI.ITEMS_VIEW);
 			}
 		};
 		mainLayout.addComponents(labelName, labelAmount, labelDescription, labelOem, labelCapacity,

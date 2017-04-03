@@ -17,7 +17,6 @@ import com.vaadin.ui.themes.ValoTheme;
 
 import eshop.domain.Basket;
 import eshop.view.BasketView;
-import eshop.view.DefaultView;
 import eshop.view.ItemDetailView;
 import eshop.view.ItemFormView;
 import eshop.view.ItemsView;
@@ -35,8 +34,7 @@ public class MyVaadinUI extends UI implements ErrorHandler {
 	
 	private Basket basket;
 
-	public static final String HOME_VIEW = "";
-	public static final String ITEMS_VIEW = "items";
+	public static final String ITEMS_VIEW = "";
 	public static final String ITEM_DETAIL_VIEW = "item-detail";
 	public static final String ITEM_FORM_VIEW = "item-form";
 	public static final String BASKET_VIEW = "basket";
@@ -64,7 +62,6 @@ public class MyVaadinUI extends UI implements ErrorHandler {
 		BootstrapMenu sideMenu = new BootstrapMenu();
 		setContent(sideMenu);
 		navigator.init(this, sideMenu);
-		navigator.addView("", DefaultView.class);
 		navigator.addView(ITEMS_VIEW, itemsView);
 		navigator.addView(ITEM_DETAIL_VIEW, itemDetailView);
 		navigator.addView(ITEM_FORM_VIEW, itemFormView);

@@ -36,7 +36,7 @@ public class UserOrdersView extends CustomView {
 		final IndexedContainer container = new IndexedContainer();
 		container.addContainerProperty("name", String.class, null);
 		container.addContainerProperty("city", String.class, null);
-		container.addContainerProperty("address", String.class, null);
+		container.addContainerProperty("street", String.class, null);
 		container.addContainerProperty("orderDate", String.class, null);
 		container.addContainerProperty("orderedItems", String.class, null);
 		for (UserOrder userOrder : userOrders) {

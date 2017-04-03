@@ -23,34 +23,28 @@ import com.vaadin.ui.themes.ValoTheme;
 public class BootstrapMenu extends SideMenu {
 	
 	public BootstrapMenu() {
-		setMenuCaption("Интернет-магазин");
+		setMenuCaption("Internet E-Shop");
 
-		addMenuItem("База данных", FontAwesome.DATABASE, () -> {
-			UI.getCurrent().getNavigator().navigateTo(MyVaadinUI.HOME_VIEW);
-		});
-		addMenuItem("Товары", FontAwesome.BOOKMARK_O, () -> {
+		addMenuItem("Items", FontAwesome.BOOKMARK_O, () -> {
 			UI.getCurrent().getNavigator().navigateTo(MyVaadinUI.ITEMS_VIEW);
 		});
-		addMenuItem("Добавить", FontAwesome.BUILDING, () -> {
-			UI.getCurrent().getNavigator().navigateTo(MyVaadinUI.ITEM_FORM_VIEW);
-		});
-		addMenuItem("Корзина", FontAwesome.USERS, () -> {
+		addMenuItem("Basket", FontAwesome.USERS, () -> {
 			UI.getCurrent().getNavigator().navigateTo(MyVaadinUI.BASKET_VIEW);
 		});
-		addMenuItem("Заказы", FontAwesome.SHOPPING_BAG, () -> {
+		addMenuItem("History", FontAwesome.SHOPPING_BAG, () -> {
 			UI.getCurrent().getNavigator().navigateTo(MyVaadinUI.USER_ORDERS_VIEW);
 		});
 
-		setUserName("Анна Валерьевна");
+		setUserName("Anna Yang");
 		setUserIcon(new ExternalResource("icons/profile-pic-300px.jpg"));
 
 		clearUserMenu();
 		
 	    final BeanFieldGroup<User> fieldGroup = new BeanFieldGroup<User>(User.class);
         fieldGroup.bindMemberFields(this);
-		addUserMenuItem("Профиль", FontAwesome.WRENCH, () -> {
+		addUserMenuItem("Profile", FontAwesome.WRENCH, () -> {
 			// Notification.show("Showing settings", Type.HUMANIZED_MESSAGE);
-			final Window window = new Window("Профиль:");
+			final Window window = new Window("Profile:");
 			// window.setWidth(250.0f, Unit.PIXELS);
 			window.setWidth("60%");
 
@@ -73,7 +67,7 @@ public class BootstrapMenu extends SideMenu {
 			profilePic.setWidth(100.0f, Unit.PIXELS);
 			pic.addComponent(profilePic);
 
-			Button upload = new Button("Изменить");
+			Button upload = new Button("Change");
 			upload.addStyleName(ValoTheme.BUTTON_PRIMARY);
 			pic.addComponent(upload);
 
@@ -84,7 +78,7 @@ public class BootstrapMenu extends SideMenu {
 			root.addComponent(details);
 			root.setExpandRatio(details, 1);
 
-			Label section = new Label("Личная информация");
+			Label section = new Label("Info");
 			section.addStyleName(ValoTheme.LABEL_H4);
 			section.addStyleName(ValoTheme.LABEL_COLORED);
 			details.addComponent(section);
@@ -93,30 +87,30 @@ public class BootstrapMenu extends SideMenu {
 			login.addStyleName(ValoTheme.TEXTFIELD_LARGE);
 			details.addComponent(login);
 
-			TextField firstNameField = new TextField("Имя: ");
+			TextField firstNameField = new TextField("First name: ");
 
 //			firstNameField.setValue(Core.getInstance().userT.getFirstName());
 
 			details.addComponent(firstNameField);
 
-			TextField lastNameField = new TextField("Фамилия: ");
+			TextField lastNameField = new TextField("Parent name: ");
 //			lastNameField.setValue(Core.getInstance().userT.getLastName());
 
 			details.addComponent(lastNameField);
 
-			TextField middleNameField = new TextField("Отчество: ");
+			TextField middleNameField = new TextField("Surname: ");
 //			middleNameField.setValue(Core.getInstance().userT.getMiddleName());
 			details.addComponent(middleNameField);
 
-			OptionGroup sexField = new OptionGroup("Пол");
+			OptionGroup sexField = new OptionGroup("Sex");
 			sexField.addItem(Boolean.FALSE);
-			sexField.setItemCaption(Boolean.FALSE, "Женский");
+			sexField.setItemCaption(Boolean.FALSE, "Female");
 			sexField.addItem(Boolean.TRUE);
-			sexField.setItemCaption(Boolean.TRUE, "Мужской");
+			sexField.setItemCaption(Boolean.TRUE, "Male");
 			sexField.addStyleName("horizontal");
 			details.addComponent(sexField);
 
-			Label section1 = new Label("Контактная информация");
+			Label section1 = new Label("Contact");
 			section1.addStyleName(ValoTheme.LABEL_H4);
 			section1.addStyleName(ValoTheme.LABEL_COLORED);
 			details.addComponent(section1);
@@ -131,7 +125,7 @@ public class BootstrapMenu extends SideMenu {
 
 			
 			// final Button save = new Button("Сохранить");
-			final Button okey = new Button("Сохранить", new Button.ClickListener() {
+			final Button okey = new Button("Save", new Button.ClickListener() {
 
 				@Override
 				public void buttonClick(ClickEvent event) {
@@ -145,7 +139,7 @@ public class BootstrapMenu extends SideMenu {
 			UI.getCurrent().addWindow(window);
 		});
 	
-		addUserMenuItem("Выход", FontAwesome.SIGN_OUT, () -> {
+		addUserMenuItem("Exit", FontAwesome.SIGN_OUT, () -> {
 //			Core.getEventBus().post(new UserLoggedOut());
 		});
 

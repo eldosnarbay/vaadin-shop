@@ -41,13 +41,14 @@ public class UserOrderForm extends CustomForm<UserOrder> {
 			Basket basket = ((MyVaadinUI) UI.getCurrent()).getBasket();
 			basketService.save(basket, userOrder);
 			UI.getCurrent().getNavigator().navigateTo(MyVaadinUI.USER_ORDERS_VIEW);
-		} catch (CommitException e) {
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
 	@Override
 	public void onCancel() {
-		UI.getCurrent().getNavigator().navigateTo(MyVaadinUI.HOME_VIEW);
+		UI.getCurrent().getNavigator().navigateTo(MyVaadinUI.ITEMS_VIEW);
 	}
 
 }
