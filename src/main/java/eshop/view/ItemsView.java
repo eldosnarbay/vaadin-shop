@@ -45,6 +45,11 @@ public class ItemsView extends CustomView {
 	private String id;
 	private int count = 0;
 	private double sum = 0;
+	public MHorizontalLayout menu;
+	
+	public void setVisible(boolean visible) {
+		menu.setVisible(visible);
+	}
 
 	public ItemsView() {
 		super("Item list");
@@ -52,7 +57,8 @@ public class ItemsView extends CustomView {
 		table.setSelectable(true);
 		table.setSizeFull();
 
-		MHorizontalLayout menu = new MHorizontalLayout();
+		menu = new MHorizontalLayout();
+		menu.setVisible(false);
 		MButton add = new MButton("Add item");
 		add.setIcon(new ExternalResource("icons/add.png"));
 		add.addClickListener(new MClickListener() {

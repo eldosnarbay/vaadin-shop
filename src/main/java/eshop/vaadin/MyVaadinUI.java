@@ -20,6 +20,7 @@ import eshop.view.BasketView;
 import eshop.view.ItemDetailView;
 import eshop.view.ItemFormView;
 import eshop.view.ItemsView;
+import eshop.view.LoginView;
 import eshop.view.UserOrdersView;
 
 @SpringUI
@@ -28,10 +29,10 @@ import eshop.view.UserOrdersView;
 public class MyVaadinUI extends UI implements ErrorHandler {
 
 	protected static Logger logger = LoggerFactory.getLogger(MyVaadinUI.class);
-	
+
 	@Autowired
 	private SpringNavigator navigator;
-	
+
 	private Basket basket;
 
 	public static final String ITEMS_VIEW = "";
@@ -39,9 +40,11 @@ public class MyVaadinUI extends UI implements ErrorHandler {
 	public static final String ITEM_FORM_VIEW = "item-form";
 	public static final String BASKET_VIEW = "basket";
 	public static final String USER_ORDERS_VIEW = "user-orders";
+	public static final String LOGIN_VIEW = "login";
 
 	@Autowired
-	private ItemsView itemsView;
+	public ItemsView itemsView;
+	public BootstrapMenu sideMenu;
 
 	@Autowired
 	private ItemDetailView itemDetailView;
@@ -51,15 +54,19 @@ public class MyVaadinUI extends UI implements ErrorHandler {
 
 	@Autowired
 	private BasketView basketView;
-	
+
 	@Autowired
 	private UserOrdersView userOrdersView;
+	
+	@Autowired
+	private LoginView loginView;
 
 	@Override
 	protected void init(VaadinRequest request) {
 		Responsive.makeResponsive(this);
 		VaadinSession.getCurrent().setErrorHandler(this);
-		BootstrapMenu sideMenu = new BootstrapMenu();
+
+		sideMenu = new BootstrapMenu();
 		setContent(sideMenu);
 		navigator.init(this, sideMenu);
 		navigator.addView(ITEMS_VIEW, itemsView);
@@ -67,14 +74,17 @@ public class MyVaadinUI extends UI implements ErrorHandler {
 		navigator.addView(ITEM_FORM_VIEW, itemFormView);
 		navigator.addView(BASKET_VIEW, basketView);
 		navigator.addView(USER_ORDERS_VIEW, userOrdersView);
+		navigator.addView(LOGIN_VIEW, loginView);
 		basket = new Basket();
+
 	}
 
 	@Override
 	public void error(com.vaadin.server.ErrorEvent event) {
+		event.getThrowable().printStackTrace();
 		logger.error(event.getThrowable().getLocalizedMessage());
 	}
-	
+
 	public Basket getBasket() {
 		return basket;
 	}

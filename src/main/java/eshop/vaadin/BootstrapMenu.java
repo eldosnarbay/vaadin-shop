@@ -6,6 +6,8 @@ import org.vaadin.teemusa.sidemenu.SideMenu;
 import com.vaadin.data.fieldgroup.BeanFieldGroup;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.server.FontAwesome;
+import com.vaadin.server.Page;
+import com.vaadin.server.VaadinSession;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
@@ -35,6 +37,11 @@ public class BootstrapMenu extends SideMenu {
 			UI.getCurrent().getNavigator().navigateTo(MyVaadinUI.USER_ORDERS_VIEW);
 		});
 
+		
+
+	}
+	
+	public void setUser() {
 		setUserName("Anna Yang");
 		setUserIcon(new ExternalResource("icons/profile-pic-300px.jpg"));
 
@@ -140,8 +147,8 @@ public class BootstrapMenu extends SideMenu {
 		});
 	
 		addUserMenuItem("Exit", FontAwesome.SIGN_OUT, () -> {
-//			Core.getEventBus().post(new UserLoggedOut());
+			VaadinSession.getCurrent().setAttribute("User", null);
+			Page.getCurrent().open("", "_self", true); 
 		});
-
 	}
 }
